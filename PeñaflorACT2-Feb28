@@ -1,0 +1,76 @@
+using System;
+namespace PENAFLOR_P2_FEB28
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //activity2
+            Console.WriteLine("Welcome to Loan App");
+            Console.WriteLine("Loan Tracker");
+
+
+            Console.WriteLine("Enter any amount to loan PHP1,000-PHP100,000");
+            Console.WriteLine("_____________________________________");
+            int amount = Convert.ToInt32(Console.ReadLine());
+            if (amount >= 1000 || amount <= 100000)
+            {
+            Console.WriteLine("Your loan has been approved!");
+            }
+            else
+            {
+            Console.WriteLine("Your loan has been denied!");
+            }
+        }
+    }
+}
+
+
+//int amount = Convert.amount(Console.Readline());
+//loan form
+//Console.WriteLine("Input your current job");
+//string job = Console.Readline();
+
+//Console.WriteLine("Input your current salary");
+//string salary = Console.Readline();
+
+//Console.WriteLine("Input your current company");
+//string company = Console.Readline();
+
+//Console.WriteLine("Select loan duration interest rate 5-10% is based on the duration of loan");
+//string loan = Console.Readline();
+
+
+//if else
+//if
+//Console.WriteLine("3 month");
+//else
+//Console.WriteLine("6 months");
+//else
+//Console.WriteLine("9 months");
+//else if
+//Console.WriteLine("12 months");
+//default;
+
+
+
+//int choice = Convert
+//notification
+//Console.WriteLine("You have loan this amount Deadline: date ");
+//Console.WriteLine("Your loan has been approved");
+//Console.WriteLine("Waiting for loan approval");
+
+
+//deadline
+//Console.WriteLine("Loan dealine is in 1 month");
+//Console.WriteLine("Loan dealine is in 2 months");
+//Console.WriteLine("Loan dealine is in 3 months");
+//Console.WriteLine("Loan dealine is in 4 months");
+//Console.WriteLine("Loan dealine is in 5 months");
+//Console.WriteLine("Loan dealine is in 6 months");
+//Console.WriteLine("Loan dealine is in 7 months");
+//Console.WriteLine("Loan dealine is in 8 months");
+//Console.WriteLine("Loan dealine is in 9 months");
+//Console.WriteLine("Loan dealine is in 10 months");
+//Console.WriteLine("Loan dealine is in 11 months");
+// Console.WriteLine("Loan dealine is in 12 months");
