@@ -1,165 +1,78 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.AccessControl;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-
-namespace PenaflorLOAN_APP2
+using System;
+namespace PENAFLOR_P2_FEB28
 {
     internal class Program
     {
-        static string[] usernames = new string[3];
-        static string[] passwords = new string[3];
-        static List<string> accessLogs = new List<string>();
-
         static void Main(string[] args)
         {
-            Console.WriteLine("ACCOUNT MANAGEMENT SYSTEM");
+            //activity2
+            Console.WriteLine("Welcome to Loan App");
+            Console.WriteLine("Loan Tracker");
 
-            PopulateData();
 
-            bool isLogin = LoginOption();
-
-            while (isLogin)
+            Console.WriteLine("Enter any amount to loan PHP1,000-PHP100,000");
+            Console.WriteLine("_____________________________________");
+            int amount = Convert.ToInt32(Console.ReadLine());
+            if (amount >= 1000 || amount <= 100000)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    if (UserLogin())
-                    {
-                        Console.WriteLine("Login Successful!");
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid Credentials.");
-                    }
-                }
-
-                isLogin = LoginOption();
+            Console.WriteLine("Your loan has been approved!");
             }
-
-            DisplayLogs();
-        }
-
-        static bool LoginOption()
-        {
-            Console.Write("Do you want to login? y/n: ");
-            string loginInput = Console.ReadLine();
-
-            bool isLogin = false;
-
-            switch (loginInput)
+            else
             {
-                case "y":
-                    isLogin = true;
-                    break;
-                case "n":
-                    isLogin = false;
-                    break;
-                default:
-                    Console.WriteLine("Invalid input. System will exit.");
-                    Environment.Exit(0);
-                    break;
-            }
-
-            return isLogin;
-        }
-
-        static void PopulateData()
-        {
-            usernames[0] = "Neo";
-            usernames[1] = "Neo1";
-            usernames[2] = "Neo2";
-
-            passwords[0] = "Neo12345";
-            passwords[1] = "Neo123456";
-            passwords[2] = "Neo1234567";
-
-        }
-
-        static void AddAccessLogs(string usernameInput, string passwordInput, bool isMatched)
-        {
-            accessLogs.Add($"username: {usernameInput}, password: {passwordInput}, Is Success?: {isMatched}");
-        }
-
-        static bool UserLogin()
-        {
-            Console.Write("Enter username: ");
-            string usernameInput = Console.ReadLine();
-            Console.Write("Enter password: ");
-            string passwordInput = Console.ReadLine();
-
-            bool isMatched = false;
-
-            for (int x = 0; x < usernames.Length; x++)
-            {
-                if (usernameInput == usernames[x] && passwordInput == passwords[x])
-                {
-                    isMatched = true;
-                    break;
-                }
-                else
-                {
-                    isMatched = false;
-                }
-            }
-
-            AddAccessLogs(usernameInput, passwordInput, isMatched);
-
-            return isMatched;
-        }
-
-        static void DisplayLogs()
-        {
-            foreach (var log in accessLogs)
-            {
-                Console.WriteLine(log);
-
-
-                //activity2
-                Console.WriteLine("Welcome to Loan App");
-                Console.WriteLine("Loan Tracker");
-                Console.WriteLine("Enter the amount to loan 1000-100,000");
-                
-
-
-                //loan form
-                Console.WriteLine("Input your current job");
-                string job = Console.Readline();
-                Console.WriteLine("Input your current salary");
-                string salary = Console.Readline();
-                Console.WriteLine("Input your current company");
-                string company = Console.Readline();
-                Console.WriteLine("Select loan duration interest rate 5-10% is based on the duration of loan");
-
-                //if else
-                Console.WriteLine("3 month");
-                Console.WriteLine("6 months");
-                Console.WriteLine("9 months");
-                Console.WriteLine("12 months");
-                int choice = Convert.
-
-                //notification
-                Console.WriteLine("You have loan this amount Deadline: date ");
-                Console.WriteLine("Your loan has been approved");
-                Console.WriteLine("Waiting for loan approval");
-
-                //deadline 
-                Console.WriteLine("Loan dealine is in 1 month");
-                Console.WriteLine("Loan dealine is in 2 months");
-                Console.WriteLine("Loan dealine is in 3 months");
-                Console.WriteLine("Loan dealine is in 4 months");
-                Console.WriteLine("Loan dealine is in 5 months");
-                Console.WriteLine("Loan dealine is in 6 months");
-                Console.WriteLine("Loan dealine is in 7 months");
-                Console.WriteLine("Loan dealine is in 8 months");
-                Console.WriteLine("Loan dealine is in 9 months");
-                Console.WriteLine("Loan dealine is in 10 months");
-                Console.WriteLine("Loan dealine is in 11 months");
-                Console.WriteLine("Loan dealine is in 12 months");
-
-
+            Console.WriteLine("Your loan has been denied!");
             }
         }
     }
 }
+
+
+//int amount = Convert.amount(Console.Readline());
+//loan form
+//Console.WriteLine("Input your current job");
+//string job = Console.Readline();
+
+//Console.WriteLine("Input your current salary");
+//string salary = Console.Readline();
+
+//Console.WriteLine("Input your current company");
+//string company = Console.Readline();
+
+//Console.WriteLine("Select loan duration interest rate 5-10% is based on the duration of loan");
+//string loan = Console.Readline();
+
+
+//if else
+//if
+//Console.WriteLine("3 month");
+//else
+//Console.WriteLine("6 months");
+//else
+//Console.WriteLine("9 months");
+//else if
+//Console.WriteLine("12 months");
+//default;
+
+
+
+//int choice = Convert.
+
+//notification
+//Console.WriteLine("You have loan this amount Deadline: date ");
+//Console.WriteLine("Your loan has been approved");
+//Console.WriteLine("Waiting for loan approval");
+
+
+//deadline 
+//Console.WriteLine("Loan dealine is in 1 month");
+//Console.WriteLine("Loan dealine is in 2 months");
+//Console.WriteLine("Loan dealine is in 3 months");
+//Console.WriteLine("Loan dealine is in 4 months");
+//Console.WriteLine("Loan dealine is in 5 months");
+//Console.WriteLine("Loan dealine is in 6 months");
+//Console.WriteLine("Loan dealine is in 7 months");
+//Console.WriteLine("Loan dealine is in 8 months");
+//Console.WriteLine("Loan dealine is in 9 months");
+//Console.WriteLine("Loan dealine is in 10 months");
+//Console.WriteLine("Loan dealine is in 11 months");
+// Console.WriteLine("Loan dealine is in 12 months");
+
