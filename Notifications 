@@ -1,4 +1,4 @@
-//Notifications sa loan
+//Notifications sa loan (Business logic)
 
 switch (Months)
 {
