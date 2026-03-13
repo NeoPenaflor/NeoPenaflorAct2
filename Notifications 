@@ -1,0 +1,69 @@
+//Notifications sa loan
+
+switch (Months)
+{
+case 1:
+Console.WriteLine
+("Your loan deadline is in 1 month");
+break;
+
+
+case 2:
+Console.WriteLine
+("Your loan deadline is in 2 months");
+break;
+
+case 3:
+Console.WriteLine
+("Your loan deadline is in 3 months");
+break;
+
+case 4:
+Console.WriteLine
+("Your loan deadline is in 4 months");
+break;
+
+case 5:
+Console.WriteLine
+("Your loan deadline is in 5 months");
+break;
+
+case 6:
+Console.WriteLine
+("Your loan deadline is in 6 months");
+break;
+
+case 7:
+Console.WriteLine
+("Your loan deadline is in 7 months");
+break;
+
+case 8:
+Console.WriteLine
+("Your loan deadline is in 8 months");
+break;
+
+case 9:
+Console.WriteLine
+("Your loan deadline is in 9 months");
+break;
+
+case 10:
+Console.WriteLine
+("Your loan deadline is in 10 months");
+break;
+
+case 11:
+Console.WriteLine
+("Your loan deadline is in 11 months");
+break;
+
+
+case 12:
+Console.WriteLine
+("Your loan deadline is in 12 months");
+break;
+
+
+
+}
