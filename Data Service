@@ -1,0 +1,17 @@
+
+        static void PopulateData()
+        {
+            usernames[0] = "Neo";
+            usernames[1] = "Neo1";
+            usernames[2] = "Neo2";
+
+            passwords[0] = "Neo12345";
+            passwords[1] = "Neo123456";
+            passwords[2] = "Neo1234567";
+
+        }
+
+        static void AddAccessLogs(string usernameInput, string passwordInput, bool isMatched)
+        {
+            accessLogs.Add($"username: {usernameInput}, password: {passwordInput}, Is Success?: {isMatched}");
+        }
