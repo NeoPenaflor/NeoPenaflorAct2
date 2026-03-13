@@ -1,9 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.AccessControl;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-
 namespace PenaflorLOAN_APP2
 {
     internal class Program
@@ -145,19 +139,75 @@ namespace PenaflorLOAN_APP2
                 Console.WriteLine("Waiting for loan approval");
 
                 //deadline 
-                Console.WriteLine("Loan dealine is in 1 month");
-                Console.WriteLine("Loan dealine is in 2 months");
-                Console.WriteLine("Loan dealine is in 3 months");
-                Console.WriteLine("Loan dealine is in 4 months");
-                Console.WriteLine("Loan dealine is in 5 months");
-                Console.WriteLine("Loan dealine is in 6 months");
-                Console.WriteLine("Loan dealine is in 7 months");
-                Console.WriteLine("Loan dealine is in 8 months");
-                Console.WriteLine("Loan dealine is in 9 months");
-                Console.WriteLine("Loan dealine is in 10 months");
-                Console.WriteLine("Loan dealine is in 11 months");
-                Console.WriteLine("Loan dealine is in 12 months");
+                
+switch (Months)
+{
+case 1:
+Console.WriteLine
+("Your loan deadline is in 1 month");
+break;
 
+
+case 2:
+Console.WriteLine
+("Your loan deadline is in 2 months");
+break;
+
+case 3:
+Console.WriteLine
+("Your loan deadline is in 3 months");
+break;
+
+case 4:
+Console.WriteLine
+("Your loan deadline is in 4 months");
+break;
+
+case 5:
+Console.WriteLine
+("Your loan deadline is in 5 months");
+break;
+
+case 6:
+Console.WriteLine
+("Your loan deadline is in 6 months");
+break;
+
+case 7:
+Console.WriteLine
+("Your loan deadline is in 7 months");
+break;
+
+case 8:
+Console.WriteLine
+("Your loan deadline is in 8 months");
+break;
+
+case 9:
+Console.WriteLine
+("Your loan deadline is in 9 months");
+break;
+
+case 10:
+Console.WriteLine
+("Your loan deadline is in 10 months");
+break;
+
+case 11:
+Console.WriteLine
+("Your loan deadline is in 11 months");
+break;
+
+
+case 12:
+Console.WriteLine
+("Your loan deadline is in 12 months");
+break;
+
+
+
+
+            
 
             }
         }
