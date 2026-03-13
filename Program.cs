@@ -108,15 +108,7 @@ namespace PenaflorLOAN_MARCH13_BL&DL
             foreach (var log in accessLogs)
             {
                 Console.WriteLine(log);
-
-
-                //Activity 2
-                Console.WriteLine("Welcome to Loan App");
-                Console.WriteLine("Loan Tracker");
-                Console.WriteLine("Enter the amount to loan 1000-100,000");
-                
-
-
+            
                 //loan form
                 Console.WriteLine("Input your current job");
                 string job = Console.Readline();
@@ -133,7 +125,7 @@ namespace PenaflorLOAN_MARCH13_BL&DL
                 Console.WriteLine("12 months");
                 int choice = Convert.
 
-                //notification
+                //notification part 1
                 Console.WriteLine("You have loan this amount Deadline: date ");
                 Console.WriteLine("Your loan has been approved");
                 Console.WriteLine("Waiting for loan approval");
