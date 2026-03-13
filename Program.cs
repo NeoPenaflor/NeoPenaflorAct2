@@ -1,4 +1,5 @@
 namespace PenaflorLOAN_MARCH13_BL&DL
+//(Nilipat sa ibang file yung mga running)
 {
     internal class Program
     {
