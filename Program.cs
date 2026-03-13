@@ -1,4 +1,4 @@
-namespace PenaflorLOAN_APP2
+namespace PenaflorLOAN_MARCH13_BL&DL
 {
     internal class Program
     {
@@ -110,7 +110,7 @@ namespace PenaflorLOAN_APP2
                 Console.WriteLine(log);
 
 
-                //activity2
+                //Activity 2
                 Console.WriteLine("Welcome to Loan App");
                 Console.WriteLine("Loan Tracker");
                 Console.WriteLine("Enter the amount to loan 1000-100,000");
