@@ -1,6 +1,10 @@
+
 //Notifications sa loan (Business logic)
 
+int Months = Convert.ToInt32(Console.ReadLine());
 switch (Months)
+
+
 {
 case 1:
 Console.WriteLine
@@ -56,6 +60,7 @@ break;
 case 11:
 Console.WriteLine
 ("Your loan deadline is in 11 months");
+
 break;
 
 
@@ -65,5 +70,9 @@ Console.WriteLine
 break;
 
 
+default:
+Console.WriteLine
+("Invalid input, enter 1 to 12 only");
+break;
 
 }
