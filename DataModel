@@ -1,16 +1,49 @@
 public class Loaner
-{
+    {
 
 
 private string username;
 public string Username
 {
-get {return username;} 
-set {username = value;}
+    get {return username;} 
+    set {username = value;}
 }
 
 
+private string password;
+public string Password
+{
+    get { return password;}
+    set { password = value;}
+ }
+
+
+private string job;
+public string Job
+{
+    get { return job;}
+    set { job = value;}
 }
 
+private decimal salary;
+public decimal Salary
+{
+    get { return salary;}
+    set { salary = value;}
+}
 
-//capital dapat yung sa public kasi hindi variable
+private string company;
+public string Company
+{
+    get { return company;}
+    set { company = value;}
+}
+
+private int loanDurationMonths;
+public int LoanDurationMonths
+{
+    get { return loanDurationMonths;}
+    set { loanDurationMonths = value;}
+}
+
+     }
