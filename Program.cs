@@ -112,11 +112,11 @@ namespace PenaflorLOAN_MARCH13_BLDL
             
                 //loan form
                 Console.WriteLine("Input your current job");
-                string job = Console.Readline();
+                string job = Console.ReadLine();
                 Console.WriteLine("Input your current salary");
-                string salary = Console.Readline();
+                string salary = Console.ReadLine();
                 Console.WriteLine("Input your current company");
-                string company = Console.Readline();
+                string company = Console.ReadLine();
                 Console.WriteLine("Select loan duration interest rate 5-10% is based on the duration of loan");
 
                 //if else
