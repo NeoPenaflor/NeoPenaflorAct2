@@ -119,12 +119,48 @@ namespace PenaflorLOAN_MARCH13_BLDL
                 string company = Console.ReadLine();
                 Console.WriteLine("Select loan duration interest rate 5-10% is based on the duration of loan");
 
-                //if else
+              
+Console.WriteLine("Select how long do you want to loan the money");
 Console.WriteLine("3 month");
 Console.WriteLine("6 months");
 Console.WriteLine("9 months");
 Console.WriteLine("12 months");
+
 int choice = Convert.ToInt32(Console.ReadLine());
+int loanMonths = 0;
+
+switch (choice)
+{
+case 1:
+loanMonths = 3;
+break;
+
+case 2:
+loanMonths = 6;
+break;
+
+case 3:
+loanMonths = 9;
+break;
+
+case 4:
+loanMonths = 12;
+break;
+    
+default:
+Console.WriteLine("Invalid choice");
+loanMonths = 0;
+break;
+
+}
+
+
+
+
+
+
+
+
 
                 //notification part 1
                 Console.WriteLine("You have loan this amount Deadline: date ");
