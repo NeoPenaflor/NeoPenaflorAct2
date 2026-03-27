@@ -120,11 +120,11 @@ namespace PenaflorLOAN_MARCH13_BLDL
                 Console.WriteLine("Select loan duration interest rate 5-10% is based on the duration of loan");
 
                 //if else
-                Console.WriteLine("3 month");
-                Console.WriteLine("6 months");
-                Console.WriteLine("9 months");
-                Console.WriteLine("12 months");
-                int choice = Convert.
+Console.WriteLine("3 month");
+Console.WriteLine("6 months");
+Console.WriteLine("9 months");
+Console.WriteLine("12 months");
+int choice = Convert.ToInt32(Console.ReadLine());
 
                 //notification part 1
                 Console.WriteLine("You have loan this amount Deadline: date ");
