@@ -154,19 +154,6 @@ break;
 
 }
 
-
-
-
-
-
-
-
-
-                //notification part 1
-                Console.WriteLine("You have loan this amount Deadline: date ");
-                Console.WriteLine("Your loan has been approved");
-                Console.WriteLine("Waiting for loan approval");
-
              
     }
 }
