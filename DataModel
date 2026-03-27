@@ -1,1 +1,16 @@
-//No data model as of now
+public class Loaner
+{
+
+
+private string username;
+public string Username
+{
+get {return username;} 
+set {username = value;}
+}
+
+
+}
+
+
+//capital dapat yung sa public kasi hindi variable
