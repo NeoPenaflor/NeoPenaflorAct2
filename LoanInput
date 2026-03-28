@@ -13,7 +13,7 @@ Console.WriteLine("Loan Tracker");
 Console.WriteLine("Enter any amount to loan PHP1,000-PHP100,000");
             Console.WriteLine("_____________________________________");
             int amount = Convert.ToInt32(Console.ReadLine());
-            if (amount >= 1000 || amount <= 100000)
+            if (amount >= 1000 && amount <= 100000)
             {
             Console.WriteLine("Your loan has been approved!");
             }
