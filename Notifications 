@@ -1,5 +1,15 @@
 
 //Notifications sa loan (Business logic)
+using System;
+namespace InterestNotif
+{
+class Notification
+   {
+public void Notification()
+      {
+
+
+
 
 int Months = Convert.ToInt32(Console.ReadLine());
 switch (Months)
@@ -72,7 +82,7 @@ break;
 
 default:
 Console.WriteLine
-("Invalid input, enter 1 to 12 only");
+("Enter numbers from 1-12 only");
 break;
 
 }
