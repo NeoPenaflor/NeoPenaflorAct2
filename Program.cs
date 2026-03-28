@@ -151,9 +151,34 @@ default:
 Console.WriteLine("Invalid choice");
 loanMonths = 0;
 break;
-
 }
 
-             
+
+double interestRate;
+
+switch (loanMonths)
+    {
+
+case 3: 
+interestRate =0.05;
+break;
+
+case 6: 
+interestRate =0.10; 
+break;
+
+case 9: 
+interestRate =0.15; 
+break;
+
+case 12: 
+interestRate =0.20;
+break;
+
+default: interestRate = 0;
+break;
     }
+
+
+}
 }
