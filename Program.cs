@@ -1,4 +1,4 @@
-namespace PenaflorLOAN_MARCH13_BLDL
+namespace LoanInterestNotif
 //(Nilipat sa ibang file yung mga running)
 {
     internal class Program
