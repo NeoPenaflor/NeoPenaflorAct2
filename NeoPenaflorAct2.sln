@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11626.88 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeoPenaflorAct2", "NeoPenaflorAct2.csproj", "{55F7CDA5-E3B4-43DD-95D1-4E500381CCCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationAppService", "NotificationAppService\NotificationAppService.csproj", "{2B0895F3-F461-4206-9B1C-AE93F683D1BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanNotificationDataService", "LoanNotificationDataService\LoanNotificationDataService.csproj", "{9A1E04FF-4339-4099-B64D-3A585BD994CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanDataModel", "LoanDataModel\LoanDataModel.csproj", "{2A15242B-887E-4083-ACD4-738FAA2D72F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +21,23 @@ Global
 		{55F7CDA5-E3B4-43DD-95D1-4E500381CCCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55F7CDA5-E3B4-43DD-95D1-4E500381CCCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55F7CDA5-E3B4-43DD-95D1-4E500381CCCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B0895F3-F461-4206-9B1C-AE93F683D1BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B0895F3-F461-4206-9B1C-AE93F683D1BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B0895F3-F461-4206-9B1C-AE93F683D1BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B0895F3-F461-4206-9B1C-AE93F683D1BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A1E04FF-4339-4099-B64D-3A585BD994CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A1E04FF-4339-4099-B64D-3A585BD994CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A1E04FF-4339-4099-B64D-3A585BD994CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A1E04FF-4339-4099-B64D-3A585BD994CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A15242B-887E-4083-ACD4-738FAA2D72F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A15242B-887E-4083-ACD4-738FAA2D72F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A15242B-887E-4083-ACD4-738FAA2D72F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A15242B-887E-4083-ACD4-738FAA2D72F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0AAB0C68-F2C8-48C6-810F-F0808850954A}
 	EndGlobalSection
 EndGlobal
