@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="LoanNotificationDataService\LoanNotificationDataService.csproj" />
+    <ProjectReference Include="LoanDataModel\LoanDataModel.csproj" />
     <ProjectReference Include="NotificationAppService\NotificationAppService.csproj" />
   </ItemGroup>
 

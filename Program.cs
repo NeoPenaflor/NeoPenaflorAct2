@@ -1,190 +1,87 @@
 //working 
-
+using NotificationAppService;
 using System;
 using System.Collections.Generic;
 namespace LoanInterestNotif
 {
     internal class Program
     {
-        static string[] usernames = new string[3];
-        static string[] passwords = new string[3];
-        static List<string> accessLogs = new List<string>();
-
+        private static SystemAppService appService = new SystemAppService();
         static void Main(string[] args)
         {
-            Console.WriteLine("ACCOUNT MANAGEMENT SYSTEM");
-
-            PopulateData();
-
-            bool isLogin = LoginOption();
-
-            while (isLogin)
             {
-                for (int i = 0; i < 3; i++)
+                Console.WriteLine("Input your name");
+                string name = Console.ReadLine();
+
+                Console.WriteLine("Input your current job");
+                string job = Console.ReadLine();
+
+                Console.WriteLine("Input your current salary");
+                int salary = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Input your current company");
+                string company = Console.ReadLine();
+
+                Console.WriteLine("Select how long do you want to loan the money");
+                Console.WriteLine("1. 3 months");
+                Console.WriteLine("2. 6 months");
+                Console.WriteLine("3. 9 months");
+                Console.WriteLine("4. 12 months");
+
+                int choice = Convert.ToInt32(Console.ReadLine());
+                int loanMonths = 0;
+
+                switch (choice)
                 {
-                    if (UserLogin())
-                    {
-                        Console.WriteLine("Login Successful!");
+                    case 1:
+                        loanMonths = 3;
                         break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid Credentials.");
-                    }
+
+                    case 2:
+                        loanMonths = 6;
+                        break;
+
+                    case 3:
+                        loanMonths = 9;
+                        break;
+
+                    case 4:
+                        loanMonths = 12;
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid choice");
+                        return;
                 }
 
-                isLogin = LoginOption();
-            }
-
-            DisplayLogs();
-            LoanForm();
-        }
-
-        static bool LoginOption()
-        {
-            Console.Write("Do you want to login? y/n: ");
-            string loginInput = Console.ReadLine();
-
-            bool isLogin = false;
-
-            switch (loginInput)
-            {
-                case "y":
-                    isLogin = true;
-                    break;
-                case "n":
-                    isLogin = false;
-                    break;
-                default:
-                    Console.WriteLine("Invalid input. System will exit.");
-                    Environment.Exit(0);
-                    break;
-            }
-
-            return isLogin;
-        }
-
-        static void PopulateData()
-        {
-            usernames[0] = "Neo";
-            usernames[1] = "Neo1";
-            usernames[2] = "Neo2";
-
-            passwords[0] = "Neo12345";
-            passwords[1] = "Neo123456";
-            passwords[2] = "Neo1234567";
-
-        }
-
-        static void AddAccessLogs(string usernameInput, string passwordInput, bool isMatched)
-        {
-            accessLogs.Add($"username: {usernameInput}, password: {passwordInput}, Is Success?: {isMatched}");
-        }
-
-        static bool UserLogin()
-        {
-            Console.Write("Enter username: ");
-            string usernameInput = Console.ReadLine();
-            Console.Write("Enter password: ");
-            string passwordInput = Console.ReadLine();
-
-            bool isMatched = false;
-
-            for (int x = 0; x < usernames.Length; x++)
-            {
-                if (usernameInput == usernames[x] && passwordInput == passwords[x])
+                double interestRate;
+                switch (loanMonths)
                 {
-                    isMatched = true;
-                    break;
+                    case 3:
+                        interestRate = 0.05;
+                        break;
+
+                    case 6:
+                        interestRate = 0.10;
+                        break;
+
+                    case 9:
+                        interestRate = 0.15;
+                        break;
+
+                    case 12:
+                        interestRate = 0.20;
+                        break;
+
+                    default:
+                        interestRate = 0;
+                        break;
                 }
-                else
-                {
-                    isMatched = false;
-                }
+
+                appService.Create(name, job, salary, company, loanMonths, interestRate);
+
+                Console.WriteLine($"Loan term: {loanMonths} months");
+                Console.WriteLine($"Interest rate: {interestRate * 100}%");
             }
-
-            AddAccessLogs(usernameInput, passwordInput, isMatched);
-
-            return isMatched;
-        }
-
-        static void DisplayLogs()
-        {
-            foreach (var log in accessLogs)
-            {
-                Console.WriteLine(log);
-            }
-        }   
-   
-static void LoanForm()
-        {
-Console.WriteLine("Input your current job");
-       string job = Console.ReadLine();
-
-Console.WriteLine("Input your current salary");
-       string salary = Console.ReadLine();
-
-Console.WriteLine("Input your current company");
-        string company = Console.ReadLine();
-
-Console.WriteLine("Select how long do you want to loan the money");
-Console.WriteLine("1. 3 months");
-Console.WriteLine("2. 6 months");
-Console.WriteLine("3. 9 months");
-Console.WriteLine("4. 12 months");
-
-int choice =    Convert.ToInt32(Console.ReadLine());
-int loanMonths = 0;
-
-switch (choice)
-          {
-case 1: 
-loanMonths = 3; 
-break;
-
-case 2: 
-loanMonths = 6; 
-break;
-
-case 3: 
-loanMonths = 9; 
-break;
-
-case 4: 
-loanMonths = 12;
-break;
-
-default:
-Console.WriteLine("Invalid choice");
-return;
-            }
-
-double interestRate;
-switch (loanMonths)
-         {
-case 3: 
-interestRate = 0.05; 
-break;
-
-case 6: 
-interestRate = 0.10; 
-break;
-
-case 9: 
-interestRate = 0.15;
-break;
-
-case 12: 
-interestRate = 0.20; 
-break;
-
-default: 
-interestRate = 0; 
-break;
-        }
-
-Console.WriteLine($"Loan term: {loanMonths} months");
-Console.WriteLine($"Interest rate: {interestRate * 100}%");
         }
     }
 }

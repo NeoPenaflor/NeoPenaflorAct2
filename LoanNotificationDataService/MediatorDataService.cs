@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoanDataModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,10 +14,13 @@ namespace LoanNotificationDataService
         }
 
 
-        void Create() { }
-        void Update() { }
-        void Delete() { }
-        void View()   { }
+        public void Create(SystemDataModel LoanDS)
+        {
+            _InterfaceLoanDataService.Create(LoanDS);
+        }
+        public void Update( ) { }
+        public void Delete() { }
+        public void View()   { }
 
     }
 }

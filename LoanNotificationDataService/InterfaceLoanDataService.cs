@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoanDataModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,7 +9,7 @@ namespace LoanNotificationDataService
     {
         //lalagay ng 4 method add upd view delete
 
-        void Create();
+        void Create(SystemDataModel loanDS);
         void Update();
         void Delete();
         void View();
