@@ -10,9 +10,9 @@ namespace LoanNotificationDataService
         //lalagay ng 4 method add upd view delete
 
         void Create(SystemDataModel loanDS);
-        void Update();
+        void Update(SystemDataModel loanDS);
         void Delete();
-        void View();
+        List<SystemDataModel> View();
 
     }
 }

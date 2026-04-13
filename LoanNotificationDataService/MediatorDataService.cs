@@ -20,7 +20,10 @@ namespace LoanNotificationDataService
         }
         public void Update( ) { }
         public void Delete() { }
-        public void View()   { }
+        public List<SystemDataModel> View()   
+        {
+            return _InterfaceLoanDataService.View();
+        }
 
     }
 }

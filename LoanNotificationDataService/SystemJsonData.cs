@@ -75,5 +75,15 @@ namespace LoanNotificationDataService
         {
             throw new NotImplementedException();
         }
+
+        public void Update(SystemDataModel loanDS)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<SystemDataModel> InterfaceLoanDataService.View()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace NotificationAppService
     public class SystemAppService
     {
 
-        MediatorDataService dataServFunctions = new MediatorDataService(new SystemJsonData());
+        MediatorDataService dataServFunctions = new MediatorDataService(new LoanDBData());
 
         public void Create(string name, string job, double slry, string compny, int LnMonths, double intRate)
         {
