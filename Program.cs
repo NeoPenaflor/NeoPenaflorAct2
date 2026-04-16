@@ -1,14 +1,15 @@
-//working 
+//(Loan CONSOLE Interest+Notifications)
 using NotificationAppService;
 using System;
 using System.Collections.Generic;
 namespace LoanInterestNotif
+
 {
     internal class Program
     {
         private static SystemAppService appService = new SystemAppService();
         static void Main(string[] args)
-        {
+        
             {
                 Console.WriteLine("Input your name");
                 string name = Console.ReadLine();
@@ -77,11 +78,29 @@ namespace LoanInterestNotif
                         break;
                 }
 
-                appService.Create(name, job, salary, company, loanMonths, interestRate);
 
-                Console.WriteLine($"Loan term: {loanMonths} months");
-                Console.WriteLine($"Interest rate: {interestRate * 100}%");
+Console.WriteLine("Input how much is your loan:" );
+      double loanAmount= Convert.ToDouble(Console.ReadLine());
+      double interestAmount= 
+loanAmount*interestRate;
+      double totalPayment= 
+loanAmount+interestAmount;
+      double monthlyPayment= 
+totalPayment/loanMonths;
+
+                appService.Create(name, job, salary, company, loanMonths, interestRate);
+            Console.WriteLine($"Loan term: {loanMonths} months");
+            Console.WriteLine($"Interest rate: {interestRate * 100}%");
+            Console.WriteLine("Loan Amount: " + loanAmount);
+            Console.WriteLine("Interest Amount: " + interestAmount);
+            Console.WriteLine("Total Payment: " + totalPayment);
+            Console.WriteLine("Monthly Payment: " + monthlyPayment);
+
+
+
+Console.WriteLine("Loan Approved!");
+Console.WriteLine("Your loan is due on " + loanMonths + " months.");
+
             }
-        }
     }
 }
