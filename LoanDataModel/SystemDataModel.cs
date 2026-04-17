@@ -11,6 +11,7 @@ using System;
     public string Company      { get;set; }
     public int LoanMonths      { get;set; }
     public double InterestRate { get;set; }
+    public double LoanAmount { get; set; }
     }
 }
 
