@@ -78,8 +78,9 @@ namespace LoanInterestNotif
                         break;
                 }
 
-
-Console.WriteLine("Input how much is your loan:" );
+Console.WriteLine($"Loan term: {loanMonths} months");
+Console.WriteLine($"Interest rate: {interestRate * 100}%");
+Console.WriteLine("Input how much is your loan:");
       double loanAmount= Convert.ToDouble(Console.ReadLine());
       double interestAmount= 
 loanAmount*interestRate;
@@ -88,19 +89,12 @@ loanAmount+interestAmount;
       double monthlyPayment= 
 totalPayment/loanMonths;
 
-                appService.Create(name, job, salary, company, loanMonths, interestRate);
-            Console.WriteLine($"Loan term: {loanMonths} months");
-            Console.WriteLine($"Interest rate: {interestRate * 100}%");
-            Console.WriteLine("Loan Amount: " + loanAmount);
-            Console.WriteLine("Interest Amount: " + interestAmount);
-            Console.WriteLine("Total Payment: " + totalPayment);
-            Console.WriteLine("Monthly Payment: " + monthlyPayment);
-
-
-
-Console.WriteLine("Loan Approved!");
-Console.WriteLine("Your loan is due on " + loanMonths + " months.");
-
-            }
-    }
+Console.WriteLine("Loan Amount: " + loanAmount);
+Console.WriteLine("Interest Amount: " + interestAmount);
+Console.WriteLine("Total to Pay: " + totalPayment);
+Console.WriteLine("Monthly Pay: " + monthlyPayment);
+Console.WriteLine("Loan Approved");
+Console.WriteLine("Your loan due is in " + loanMonths + " months.");
+                 }
+    }  
 }
