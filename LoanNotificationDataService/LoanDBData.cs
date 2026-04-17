@@ -89,12 +89,35 @@ insertCommand.Parameters.AddWithValue("@TotalPayment",loan.TotalPayment);
 
         public void Delete(Guid Id)
         {
-            throw new NotImplementedException();
+  var deleteStatement = "DELETE FROM LoanVariablesTable WHERE Id = @Id";
+
+    SqlCommand deleteCommand = new SqlCommand(deleteStatement, sqlConnection);
+    deleteCommand.Parameters.AddWithValue("@Id", Id);
+
+    sqlConnection.Open();
+    deleteCommand.ExecuteNonQuery();
+    sqlConnection.Close();
         }
 
         public void Update(SystemDataModel loanDS)
         {
-            throw new NotImplementedException();
+            var updateStatement = "UPDATE LoanVariablesTable SET Name = @Name, Job = @Job, Salary = @Salary, Company = @Company, LoanMonths = @LoanMonths, InterestRate = @InterestRate, LoanAmount = @LoanAmount, TotalPayment = @TotalPayment WHERE Id = @Id";
+
+    SqlCommand updateCommand = new SqlCommand(updateStatement, sqlConnection);
+
+    updateCommand.Parameters.AddWithValue("@Id", loanDS.Id);
+ updateCommand.Parameters.AddWithValue("@Name", loanDS.Name);
+    updateCommand.Parameters.AddWithValue("@Job", loanDS.Job);
+    updateCommand.Parameters.AddWithValue("@Salary", loanDS.Salary);
+    updateCommand.Parameters.AddWithValue("@Company", loanDS.Company);
+    updateCommand.Parameters.AddWithValue("@LoanMonths", loanDS.LoanMonths);
+    updateCommand.Parameters.AddWithValue("@InterestRate", loanDS.InterestRate);
+    updateCommand.Parameters.AddWithValue("@LoanAmount", loanDS.LoanAmount);
+    updateCommand.Parameters.AddWithValue("@TotalPayment", loanDS.TotalPayment);
+
+    sqlConnection.Open();
+    updateCommand.ExecuteNonQuery();
+    sqlConnection.Close();
         }
     }
 }
