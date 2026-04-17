@@ -34,7 +34,7 @@ namespace LoanNotificationDataService
 
         public void Create(SystemDataModel loan)
         {
-            var insertStatement = "INSERT INTO LoanVariablesTable VALUES (@Name, @Id, @Job, @Salary, @Company, @LoanMonths, @InterestRate, @LoanAmount, @TotalPayment)";
+            var insertStatement = "INSERT INTO LoanVariablesTable (Name,Id,Job,Salary,Company,LoanMonths,InterestRate,LoanAmount, TotalPayment) VALUES (@Name, @Id, @Job, @Salary, @Company, @LoanMonths, @InterestRate, @LoanAmount, @TotalPayment)";
 
             SqlCommand insertCommand = new SqlCommand(insertStatement, sqlConnection);
 
