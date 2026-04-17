@@ -14,12 +14,16 @@ namespace LoanNotificationDataService
         }
 
 
-        public void Create(SystemDataModel LoanDS)
+        public void Create(SystemDataModel loanDS)
         {
-            _InterfaceLoanDataService.Create(LoanDS);
+            _InterfaceLoanDataService.Create(loanDS);
         }
-        public void Update( ) { }
-        public void Delete() { }
+        public void Update(SystemDataModel loanDS) { 
+_InterfaceLoanDataService.Update(loanDS);
+}
+        public void Delete(Guid Id) { 
+_InterfaceLoanDataService.Delete(Id);
+}
         public List<SystemDataModel> View()   
         {
             return _InterfaceLoanDataService.View();
