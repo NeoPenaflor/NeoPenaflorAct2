@@ -25,7 +25,7 @@ namespace LoanNotificationDataService
 
             if (existing.Count == 0)
             {
-                SystemDataModel adminAccount = new SystemDataModel { Name = "Neo", Id = Guid.NewGuid(), Job = "Owner", Salary = 1000, LoanMonths = 12, InterestRate = 0.5 };
+                SystemDataModel adminAccount = new SystemDataModel { Name = "Neo", Id = Guid.NewGuid(), Job = "Owner", Salary = 1000, Company = "PUP", LoanMonths = 12, InterestRate = 0.5, LoanAmount = 10000, TotalPayment = 15000 };
                 
                 Create(adminAccount);
          
@@ -34,7 +34,7 @@ namespace LoanNotificationDataService
 
         public void Create(SystemDataModel loan)
         {
-            var insertStatement = "INSERT INTO LoanVariablesTable VALUES (@Name, @Id, @Job, @Salary, @Company, @LoanMonths, @InterestRate)";
+            var insertStatement = "INSERT INTO LoanVariablesTable VALUES (@Name, @Id, @Job, @Salary, @Company, @LoanMonths, @InterestRate, @LoanAmount, @TotalPayment)";
 
             SqlCommand insertCommand = new SqlCommand(insertStatement, sqlConnection);
 
@@ -45,16 +45,18 @@ namespace LoanNotificationDataService
             insertCommand.Parameters.AddWithValue("@Company", loan.Company);
             insertCommand.Parameters.AddWithValue("@LoanMonths", loan.LoanMonths);
             insertCommand.Parameters.AddWithValue("@InterestRate", loan.InterestRate);
-            sqlConnection.Open();
+           
+insertCommand.Parameters.AddWithValue("@LoanAmount", loan.LoanAmount);
 
-            insertCommand.ExecuteNonQuery();
+insertCommand.Parameters.AddWithValue("@TotalPayment",loan.TotalPayment);
 
-            sqlConnection.Close();
+           sqlConnection.Open(); insertCommand.ExecuteNonQuery();
+           sqlConnection.Close();
         }
 
         public List<SystemDataModel> View()
         {
-            string selectStatement = "SELECT Name, Id, Job, Salary, Company, LoanMonths, InterestRate FROM LoanVariablesTable";
+            string selectStatement = "SELECT Name, Id, Job, Salary, Company, LoanMonths, InterestRate, LoanAmount, TotalPayment FROM LoanVariablesTable";
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, sqlConnection);
 
@@ -70,12 +72,13 @@ namespace LoanNotificationDataService
                 Loan.Id = Guid.Parse(reader["Id"].ToString());
                 Loan.Name = reader["Name"].ToString();
                 Loan.Job = reader["Job"].ToString();
-                Loan.Salary = Convert.ToDouble(reader["Salary"]);
+                Loan.Salary = Convert.ToInt32(reader["Salary"]);
                 Loan.Company = reader["Company"].ToString();
                 Loan.LoanMonths = Convert.ToInt32(reader["LoanMonths"]);
-                Loan.InterestRate = Convert.ToDouble(reader["InterestRate"] );
-
-                LoanApp.Add(Loan);
+                Loan.InterestRate = Convert.ToDouble(reader["InterestRate"]);
+                Loan.LoanAmount = Convert.ToDouble(reader["LoanAmount"]);
+                Loan.TotalPayment = Convert.ToDouble(reader["TotalPayment"]);
+             LoanApp.Add(Loan);
             }
 
             sqlConnection.Close();
@@ -84,12 +87,7 @@ namespace LoanNotificationDataService
        
 
 
-        public void Delete()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update()
+        public void Delete(Guid Id)
         {
             throw new NotImplementedException();
         }
