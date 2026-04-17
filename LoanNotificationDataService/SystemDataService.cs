@@ -1,27 +1,50 @@
 using LoanDataModel;
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
 namespace LoanNotificationDataService
 {
     public class SystemDataService : InterfaceLoanDataService
 
     {
-        public void Create(SystemDataModel loanDS)
+    private List<SystemDataModel> data      = new List<SystemDataModel>();
+
+    public void Create(SystemDataModel loanDS)
         {
-            throw new NotImplementedException();
+            data.Add(loanDS);
         }
 
-        public void Delete()
+    public void Delete(Guid Id)
         {
-            throw new NotImplementedException();
+        var existing =       data.FirstOrDefault(x => x.Id == Id);
+            if (existing != null)
+        {
+        data.Remove(existing);
+        }
+        }
+            
+     public void Update(SystemDataModel loanDS)
+        {
+        var existing = data.FirstOrDefault(x => x.Id == loanDS.Id);
+   
+
+if (existing != null)
+            {
+existing.Name = loanDS.Name;
+existing.Job = loanDS.Job;
+existing.Salary = loanDS.Salary;
+existing.Company = loanDS.Company;
+existing.LoanMonths = loanDS.LoanMonths;
+existing.InterestRate = loanDS.InterestRate;
+existing.LoanAmount = loanDS.LoanAmount;
+existing.TotalPayment = loanDS.TotalPayment;
+            }      
         }
 
-        public void Update(SystemDataModel loanDS)
+     public List<SystemDataModel> View()
         {
-            throw new NotImplementedException();
-        }
-
-        public List<SystemDataModel> View()
-        {
-            throw new NotImplementedException();
+        return data;
         }
     }
 }
