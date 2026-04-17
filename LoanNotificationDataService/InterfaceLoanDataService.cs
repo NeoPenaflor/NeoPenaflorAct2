@@ -11,7 +11,7 @@ namespace LoanNotificationDataService
 
         void Create(SystemDataModel loanDS);
         void Update(SystemDataModel loanDS);
-        void Delete();
+        void Delete(Guid Id);
         List<SystemDataModel> View();
 
     }
