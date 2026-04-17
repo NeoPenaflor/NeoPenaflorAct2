@@ -4,49 +4,49 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Security.Principal;
 using System.Text;
+using System.Linq;
 using System.Text.Json;
+using System.IO;
 
 namespace LoanNotificationDataService
 {
     public class SystemJsonData : InterfaceLoanDataService
     {
-        private List<SystemDataModel> Notiflist = new List<SystemDataModel>();
-
-        private string _jsonFileName;
-
-        public SystemJsonData()
+    private List<SystemDataModel> Notiflist = new List<SystemDataModel>();
+    private string _jsonFileName;
+    public SystemJsonData()
         {
-            _jsonFileName = $"{AppDomain.CurrentDomain.BaseDirectory}/LoanSystemJSONDataFile.json";
+    _jsonFileName = $"{AppDomain.CurrentDomain.BaseDirectory}/LoanSystemJSONDataFile.json";
+PopulateJsonFile();
 
-            PopulateJsonFile();
-
-        }
-        private void PopulateJsonFile()
+    private void PopulateJsonFile()
+           {
+    if (!File.Exists(_jsonFileName))
+    {
+    File.WriteAllText(_jsonFileName, "[]");      
+}
+    RetrieveDataFromJsonFile();
+   if (Notiflist.Count <= 0)
         {
-            RetrieveDataFromJsonFile();
+Notiflist.Add(new SystemDataModel { Name = "Neo", Id = Guid.NewGuid(), Job = "Owner", Salary = 1000,Company = "PUP", LoanMonths = 12, InterestRate = 0.5,LoanAmount= 10000, TotalPayment= 15000 });
 
-            if (Notiflist.Count <= 0)
-            {
-                Notiflist.Add(new SystemDataModel { Name = "Neo", Id = Guid.NewGuid(), Job = "Owner", Salary = 1000, LoanMonths = 12, InterestRate = 0.5 });
-
-                SaveDataToJsonFile();
+         SaveDataToJsonFile();
             }
-        }
-
+}
         private void SaveDataToJsonFile()
         {
-            using (var outputStream = File.OpenWrite(_jsonFileName))
-            {
-                JsonSerializer.Serialize<List<SystemDataModel>>(
-                    new Utf8JsonWriter(outputStream, new JsonWriterOptions
-                    { SkipValidation = true, Indented = true })
-                    , Notiflist);
-            }
-        }
+            using (var outputStream = File.Create(_jsonFileName))
+            {     
+        JsonSerializer.Serialize(
+new Utf8JsonWriter(outputStream, new JsonWriterOptions
+                    { SkipValidation = true, Indented = true }), 
+        Notiflist
+);
+}
 
-        private void RetrieveDataFromJsonFile()
-        {
-            using (var jsonFileReader = File.OpenText(_jsonFileName))
+private void RetrieveDataFromJsonFile()
+ {
+using (var jsonFileReader = File.OpenText(_jsonFileName))
             {
                 Notiflist = JsonSerializer.Deserialize<List<SystemDataModel>>
                     (jsonFileReader.ReadToEnd(), new JsonSerializerOptions
@@ -54,36 +54,46 @@ namespace LoanNotificationDataService
                     .ToList();
             }
         }
+  
+public void Delete(Guid Id)
+{
+    RetrieveDataFromJsonFile();
 
-        public void Create(SystemDataModel notif)
-        {
-            Notiflist.Add(notif);
-            SaveDataToJsonFile();
-        }
+    var existing = Notiflist.FirstOrDefault(x => x.Id == Id);
+    if (existing != null)
+    {
+        Notiflist.Remove(existing);
+        SaveDataToJsonFile();
+    }
+}
 
-        public void Delete()
-        {
-            throw new NotImplementedException();
-        }
 
-        public void Update()
-        {
-            throw new NotImplementedException();
-        }
+//
+public void Update(SystemDataModel loanDS)
+{
+    RetrieveDataFromJsonFile();
 
-        public void View()
-        {
-            throw new NotImplementedException();
-        }
+    var existing = Notiflist.FirstOrDefault(x => x.Id == loanDS.Id);
 
-        public void Update(SystemDataModel loanDS)
-        {
-            throw new NotImplementedException();
-        }
-
-        List<SystemDataModel> InterfaceLoanDataService.View()
-        {
-            throw new NotImplementedException();
+    if (existing != null)
+    {
+existing.Name = loanDS.Name;
+existing.Job = loanDS.Job;
+existing.Salary = loanDS.Salary;
+existing.Company = loanDS.Company;
+existing.LoanMonths = loanDS.LoanMonths;
+existing.InterestRate = loanDS.InterestRate;
+existing.LoanAmount = loanDS.LoanAmount;
+existing.TotalPayment = loanDS.TotalPayment;
+        SaveDataToJsonFile();
+    }
+}
+public List<SystemDataModel> View()
+{
+    RetrieveDataFromJsonFile();
+    return Notiflist;
+}      
+            
         }
     }
 }
