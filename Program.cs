@@ -1,276 +1,227 @@
-//(Loan CONSOLE Interest+Notifications)
+using LoanBusinessLogic;
 using LoanDataModel;
-using LoanNotificationDataService;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace LoanInterestNotif
 {
     internal class Program
     {
-    static void Main(string[] args)
-            {
-        SystemDataService service = 
-        new SystemDataService();
+        static void Main(string[] args)
+        {
+            LoanAppService service = new LoanAppService();
             bool running = true;
 
-            while (running)
+        while (running)
             {
-        Console.Clear();
-Console.WriteLine("LOAN");
-Console.WriteLine("1. Create Loan Record");
-Console.WriteLine("2. View All Loan Records");
-Console.WriteLine("3. Update Loan Record");
-Console.WriteLine("4. Delete Loan Record");
-Console.WriteLine("5. Exit");
-Console.Write("Choose option: ");
-string choice = Console.ReadLine();
-                
-switch (choice)
-{
- case "1": CreateLoan(service);  break;
- case "2": ViewLoans(service);   break;
- case "3": UpdateLoan(service);  break;                   
- case "4": DeleteLoan(service);  break;              
- case "5": running = false;
-                    Console.WriteLine("Exit program");
-break; default:                       Console.WriteLine("Invalid choice.");
-Pause(); break;
-                }
-            }
-        }
-static void CreateLoan(SystemDataService service)
-        {
-           Console.Clear();
-Console.WriteLine("CREATE LOAN RECORD");
-SystemDataModel 
-       loan = new SystemDataModel();
-       loan.Id = Guid.NewGuid();
-      
-Console.WriteLine("Input your name");
-loan.Name = Console.ReadLine();
-Console.WriteLine("Input your current job");
-loan.Job = Console.ReadLine();
-Console.WriteLine("Input your current salary"); 
-loan.Salary = Convert.ToDecimal(Console.ReadLine());
-Console.WriteLine("Input your current company");
-loan.Company = Console.ReadLine();
-       
- 
-               Console.WriteLine("Select how long do you want to loan the money");
-                Console.WriteLine("1. 3 months");
-                Console.WriteLine("2. 6 months");
-                Console.WriteLine("3. 9 months");
-                Console.WriteLine("4. 12 months");
+                Console.Clear();
+                Console.WriteLine("LOAN SYSTEM");
+                Console.WriteLine("1. Create Loan Record");
+                Console.WriteLine("2. View All Loan Records");
+                Console.WriteLine("3. Update Loan Record");
+                Console.WriteLine("4. Delete Loan Record");
+                Console.WriteLine("5. Get Loan By ID");
+                Console.WriteLine("6. Exit");
+                Console.Write("Choose option: ");
 
-                int choice = Convert.ToInt32(Console.ReadLine());
-                int loanMonths = 0;
+                string choice = Console.ReadLine();
 
                 switch (choice)
                 {
-                    case 1:
-                        loanMonths = 3;
+                    case "1":
+                        CreateLoan(service);
                         break;
 
-                    case 2:
-                        loanMonths = 6;
+                    case "2":
+                        ViewLoans(service);
                         break;
 
-                    case 3:
-                        loanMonths = 9;
+                    case "3":
+                        UpdateLoan(service);
                         break;
 
-                    case 4:
-                        loanMonths = 12;
+                    case "4":
+                        DeleteLoan(service);
                         break;
 
-                    default:
-                        Console.WriteLine("Invalid choice");
-                        return;
-                }
-
-                double interestRate;
-                switch (loanMonths)
-                {
-                    case 3:
-                        interestRate = 0.05;
+                    case "5":
+                        GetLoanById(service);
                         break;
 
-                    case 6:
-                        interestRate = 0.10;
-                        break;
-
-                    case 9:
-                        interestRate = 0.15;
-                        break;
-
-                    case 12:
-                        interestRate = 0.20;
+                    case "6":
+                        running = false;
                         break;
 
                     default:
-                        interestRate = 0;
+                        Console.WriteLine("Invalid choice.");
+                        Pause();
                         break;
                 }
+            }
+        }
 
-Console.WriteLine($"Loan term: {loanMonths} months");
-Console.WriteLine($"Interest rate: {interestRate * 100}%");
-Console.WriteLine("Input how much is your loan:");
-      double loanAmount= Convert.ToDouble(Console.ReadLine());
-      double interestAmount= 
-loanAmount*interestRate;
-      double totalPayment= 
-loanAmount+interestAmount;
-      double monthlyPayment= 
-totalPayment/loanMonths;
+        static void CreateLoan(LoanAppService service)
+        {
+            Console.Clear();
 
-Console.WriteLine("Loan Amount: " + loanAmount);
-Console.WriteLine("Interest Amount: " + interestAmount);
-Console.WriteLine("Total to Pay: " + totalPayment);
-Console.WriteLine("Monthly Pay: " + monthlyPayment);
-Console.WriteLine("Loan Approved");
-Console.WriteLine("Your loan due is in " + loanMonths + " months.");
-loan.LoanMonths = loanMonths;
-            loan.InterestRate = interestRate;
-            loan.LoanAmount = (decimal)loanAmount;
-            loan.TotalPayment = (decimal)totalPayment;
+            Console.Write("Name: ");
+            string name = Console.ReadLine();
 
-            service.Create(loan);
+            Console.Write("Job: ");
+            string job = Console.ReadLine();
 
-Console.WriteLine("Loan saved success.");
+            Console.Write("Salary: ");
+            int salary = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Company: ");
+            string company = Console.ReadLine();
+
+            Console.Write("Loan Months: ");
+            int loanMonths = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Interest Rate: ");
+            double interestRate = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Loan Amount: ");
+            double loanAmount = Convert.ToDouble(Console.ReadLine());
+
+            service.CreateNewLoan(
+                name,
+                job,
+                salary,
+                company,
+                loanMonths,
+                interestRate,
+                loanAmount);
+
+            Console.WriteLine("Loan created successfully.");
             Pause();
         }
 
-        static void ViewLoans(SystemDataService service)
+        static void ViewLoans(LoanAppService service)
         {
             Console.Clear();
-Console.WriteLine("VIEW LOAN RECORDS ");
 
-         List<SystemDataModel> loans = service.View();
+            var loans = service.GetLoan();
 
-            if (loans.Count == 0)
-            {
-Console.WriteLine("No records");
-            }
-            else
-            {
             foreach (var loan in loans)
             {
-                    
-                    Console.WriteLine($"ID: {loan.Id}");                  Console.WriteLine($"Name: {loan.Name}");                Console.WriteLine($"Job: {loan.Job}");                    Console.WriteLine($"Salary:{loan.Salary}");                  Console.WriteLine($"Company: {loan.Company}");                 Console.WriteLine($"Loan Months: {loan.LoanMonths}");                   Console.WriteLine($"Interest Rate: {loan.InterestRate}");
-Console.WriteLine($"Loan Amount: {loan.LoanAmount}");                  Console.WriteLine($"Total Payment: {loan.TotalPayment}");
-                }             
-            }           
+                Console.WriteLine($"ID: {loan.Id}");
+                Console.WriteLine($"Name: {loan.Name}");
+                Console.WriteLine($"Job: {loan.Job}");
+                Console.WriteLine($"Salary: {loan.Salary}");
+                Console.WriteLine($"Company: {loan.Company}");
+                Console.WriteLine($"Loan Months: {loan.LoanMonths}");
+                Console.WriteLine($"Interest Rate: {loan.InterestRate}");
+                Console.WriteLine($"Loan Amount: {loan.LoanAmount}");
+                Console.WriteLine($"Total Payment: {loan.TotalPayment}");
+                Console.WriteLine("----------------------------------");
+            }
+
+            Pause();
         }
 
-        static void UpdateLoan(SystemDataService service)
+        static void GetLoanById(LoanAppService service)
         {
             Console.Clear();
-Console.WriteLine("UPDATE RECORD");
-List<SystemDataModel> loans = service.View();
-        if (loans.Count == 0)
+
+            Console.Write("Enter Loan ID: ");
+
+            if (!Guid.TryParse(Console.ReadLine(), out Guid id))
             {
-Console.WriteLine("No records available.");
-                
-                return;
-            }
-Console.WriteLine("Existing Records:");
-        foreach (var loan in loans)
-            {
-              Console.WriteLine($"{loan.Id} - {loan.Name}");
-            }
-Console.Write("Enter ID to update: ");
-            string inputId = Console.ReadLine();
-
-            if (Guid.TryParse(inputId, out Guid id))
-            {
-                var existing = loans.Find(x => x.Id == id);
-
-                if (existing != null)
-                {
-SystemDataModel updatedLoan = 
-new SystemDataModel();
-updatedLoan.Id = existing.Id;
-
-Console.Write("Enter New Name: ");
-        updatedLoan.Name = Console.ReadLine();
-
-Console.Write("Enter New Job: ");
-        updatedLoan.Job = Console.ReadLine();
-
-Console.Write("Enter New Salary: ");
-                    updatedLoan.Salary = Convert.ToDecimal(Console.ReadLine());
-
-Console.Write("Enter New Company: ");
-                    updatedLoan.Company = Console.ReadLine();
-
-Console.Write("Enter New Loan Months: ");
-                  updatedLoan.LoanMonths = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Enter New Interest Rate: ");
-                updatedLoan.InterestRate = Convert.ToDouble(Console.ReadLine());
-
-Console.Write("Enter New Loan Amount: ");
-                  updatedLoan.LoanAmount = Convert.ToDecimal(Console.ReadLine());
-
-Console.Write("Enter New Total Payment: ");
-                updatedLoan.TotalPayment = Convert.ToDecimal(Console.ReadLine());
-            service.Update(updatedLoan);
-
-
-
-                   Console.WriteLine("Loan record updated successfully.");
-                }
-                else
-                {
-                    Console.WriteLine("Record not found.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Invalid ID format.");
-            }          
-        }
-
-        static void DeleteLoan(SystemDataService service)
-        {
-            Console.Clear();
-Console.WriteLine("DELETE LOAN RECORD ");
-
-            List<SystemDataModel> loans = service.View();
-
-            if (loans.Count == 0)
-            {
-Console.WriteLine("No records available.");               
+                Console.WriteLine("Invalid ID.");
+                Pause();
                 return;
             }
 
-Console.WriteLine("Existing Records:");
-            foreach (var loan in loans)
-            {
-                Console.WriteLine($"{loan.Id} - {loan.Name}");
-            }
+            var loan = service.GetLoanById(id);
 
-Console.Write("Enter ID to delete: ");
-            string inputId = Console.ReadLine();
-
-            if (Guid.TryParse(inputId, out Guid id))
+            if (loan == null)
             {
-                service.Delete(id);
-Console.WriteLine("Loan record deleted");
+                Console.WriteLine("Loan not found.");
             }
             else
             {
-                Console.WriteLine("Invalid ID format.");
-            }           
+                Console.WriteLine($"ID: {loan.Id}");
+                Console.WriteLine($"Name: {loan.Name}");
+                Console.WriteLine($"Job: {loan.Job}");
+                Console.WriteLine($"Salary: {loan.Salary}");
+                Console.WriteLine($"Company: {loan.Company}");
+                Console.WriteLine($"Loan Months: {loan.LoanMonths}");
+                Console.WriteLine($"Interest Rate: {loan.InterestRate}");
+                Console.WriteLine($"Loan Amount: {loan.LoanAmount}");
+                Console.WriteLine($"Total Payment: {loan.TotalPayment}");
+            }
+
+            Pause();
+        }
+        static void UpdateLoan(LoanAppService service)
+        {
+            Console.Clear();
+
+            Console.Write("Enter Loan ID: ");
+
+            if (!Guid.TryParse(Console.ReadLine(), out Guid id))
+            {
+                Console.WriteLine("Invalid ID.");
+                Pause();
+                return;
+            }
+
+            SystemDataModel loan = new SystemDataModel();
+
+            loan.Id = id;
+
+            Console.Write("Name: ");
+            loan.Name = Console.ReadLine();
+
+            Console.Write("Job: ");
+            loan.Job = Console.ReadLine();
+
+            Console.Write("Salary: ");
+            loan.Salary = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Company: ");
+            loan.Company = Console.ReadLine();
+
+            Console.Write("Loan Months: ");
+            loan.LoanMonths = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Interest Rate: ");
+            loan.InterestRate = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Loan Amount: ");
+            loan.LoanAmount = Convert.ToDouble(Console.ReadLine());
+
+            service.UpdateLoan(loan);
+
+            Console.WriteLine("Updated successfully.");
+            Pause();
+        }
+
+        static void DeleteLoan(LoanAppService service)
+        {
+            Console.Clear();
+
+            Console.Write("Enter Loan ID: ");
+
+            if (!Guid.TryParse(Console.ReadLine(), out Guid id))
+            {
+                Console.WriteLine("Invalid ID.");
+                Pause();
+                return;
+            }
+
+            service.DeleteLoan(id);
+
+            Console.WriteLine("Deleted successfully.");
+            Pause();
         }
 
         static void Pause()
         {
-            Console.WriteLine();
-            Console.WriteLine("Press anything to continue");
+            Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
         }
     }
 }
-                

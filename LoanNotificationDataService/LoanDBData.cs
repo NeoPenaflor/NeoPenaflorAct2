@@ -1,4 +1,5 @@
-﻿using LoanDataModel;
+﻿using System.Linq;
+using LoanDataModel;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -89,7 +90,7 @@ insertCommand.Parameters.AddWithValue("@TotalPayment",loan.TotalPayment);
 
         public void Delete(Guid Id)
         {
-  var deleteStatement = "DELETE FROM LoanVariablesTable WHERE Id = @Id";
+    var deleteStatement = "DELETE FROM LoanVariablesTable WHERE Id = @Id";
 
     SqlCommand deleteCommand = new SqlCommand(deleteStatement, sqlConnection);
     deleteCommand.Parameters.AddWithValue("@Id", Id);
@@ -106,7 +107,7 @@ insertCommand.Parameters.AddWithValue("@TotalPayment",loan.TotalPayment);
     SqlCommand updateCommand = new SqlCommand(updateStatement, sqlConnection);
 
     updateCommand.Parameters.AddWithValue("@Id", loanDS.Id);
- updateCommand.Parameters.AddWithValue("@Name", loanDS.Name);
+    updateCommand.Parameters.AddWithValue("@Name", loanDS.Name);
     updateCommand.Parameters.AddWithValue("@Job", loanDS.Job);
     updateCommand.Parameters.AddWithValue("@Salary", loanDS.Salary);
     updateCommand.Parameters.AddWithValue("@Company", loanDS.Company);
@@ -118,6 +119,13 @@ insertCommand.Parameters.AddWithValue("@TotalPayment",loan.TotalPayment);
     sqlConnection.Open();
     updateCommand.ExecuteNonQuery();
     sqlConnection.Close();
+
+
+
+        }
+        public SystemDataModel GetById(Guid Id)
+        {
+        return View().FirstOrDefault(x => x.Id == Id);
         }
     }
 }

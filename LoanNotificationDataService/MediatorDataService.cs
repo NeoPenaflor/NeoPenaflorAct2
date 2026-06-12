@@ -28,6 +28,9 @@ _InterfaceLoanDataService.Delete(Id);
         {
             return _InterfaceLoanDataService.View();
         }
-
+        public SystemDataModel GetById(Guid Id)
+        {
+        return _InterfaceLoanDataService.GetById(Id);
+        }
     }
 }

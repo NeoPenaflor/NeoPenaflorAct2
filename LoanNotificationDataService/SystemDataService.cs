@@ -23,8 +23,13 @@ namespace LoanNotificationDataService
         data.Remove(existing);
         }
         }
-            
-     public void Update(SystemDataModel loanDS)
+
+        public SystemDataModel GetById(Guid Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(SystemDataModel loanDS)
         {
         var existing = data.FirstOrDefault(x => x.Id == loanDS.Id);
    

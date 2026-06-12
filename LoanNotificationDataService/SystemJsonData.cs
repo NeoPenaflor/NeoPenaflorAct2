@@ -41,7 +41,8 @@ File.WriteAllText(_jsonFileName, "[]");
 
     if (Notiflist.Count <= 0)
     {
-    Notiflist.Add(new SystemDataModel {Name = "Neo", Id = Guid.NewGuid(), Job = "Owner", Salary = 1000, Company = "PUP", LoanMonths = 12, InterestRate = 0.5, LoanAmount = 10000, TotalPayment = 15000
+    Notiflist.Add(new SystemDataModel
+    {Name = "Neo", Id = Guid.NewGuid(), Job = "Owner", Salary = 1000, Company = "PUP", LoanMonths = 12, InterestRate = 0.5, LoanAmount = 10000, TotalPayment = 15000
     });
     SaveDataToJsonFile();
     }
@@ -98,8 +99,12 @@ public List<SystemDataModel> View()
     {
     RetrieveDataFromJsonFile();
     return Notiflist;
-    }      
-            
+    }
+
+        public SystemDataModel GetById(Guid Id)
+        {
+            throw new NotImplementedException();
         }
     }
-}
+    }
+

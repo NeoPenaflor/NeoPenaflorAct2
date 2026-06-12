@@ -7,7 +7,7 @@ namespace LoanNotificationDataService
 {
     public interface InterfaceLoanDataService
     {
-        //lalagay ng 4 method add upd view delete
+        SystemDataModel GetById(Guid Id);
 
         void Create(SystemDataModel loanDS);
         void Update(SystemDataModel loanDS);
